@@ -12,40 +12,110 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://calculadoradefungicidas.com.br";
+const siteName = "Calculadora de Fungicidas";
+const siteTitle = "Calculadora de Fungicidas | Compare +400 Fungicidas na Soja";
+const siteDescription = "Simule e compare a eficiência de produtos e programas de manejo de fungicidas na soja — em segundos. Monte programas com mais de 400 fungicidas cadastrados. R$ 197,00";
+
 export const metadata: Metadata = {
-  title: "Calculadora de Fungicidas | Fito Agrícola",
-  description:
-    "Simule e compare a eficiência de produtos e programas de manejo de fungicidas na soja — em segundos. Monte e compare programas com mais de 400 fungicidas.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: siteTitle,
+    template: `%s | ${siteName}`,
+  },
+  description: siteDescription,
   keywords: [
-    "fungicidas",
-    "calculadora",
-    "soja",
-    "manejo",
-    "agricultura",
-    "agrícola",
-    "fito",
+    "calculadora de fungicidas",
+    "fungicidas soja",
+    "manejo de fungicidas",
+    "programa de fungicidas",
+    "eficiência fungicidas",
+    "ferrugem asiática",
+    "cercospora",
+    "mancha alvo",
+    "antracnose soja",
+    "mofo branco",
+    "oídio soja",
+    "consultoria agrícola",
+    "agricultura de precisão",
+    "proteção de lavouras",
+    "agrônomo",
+    "produtor rural",
+    "safra soja",
   ],
   authors: [{ name: "José Alencar", url: "https://instagram.com/josedealencar.jr" }],
   creator: "Fito Consultoria Agrícola Ltda",
   publisher: "Fito Consultoria Agrícola Ltda",
+
+  // Open Graph - WhatsApp, Facebook, Meta Ads
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://calculadoradefungicidas.com.br",
-    title: "Calculadora de Fungicidas | Fito Agrícola",
-    description:
-      "Monte e compare programas de fungicidas na soja — em segundos. Mais de 400 fungicidas disponíveis.",
-    siteName: "Calculadora de Fungicidas",
+    url: siteUrl,
+    title: siteTitle,
+    description: siteDescription,
+    siteName: siteName,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Calculadora de Fungicidas - Compare +400 fungicidas na soja",
+        type: "image/png",
+      },
+    ],
   },
+
+  // Twitter/X Cards
   twitter: {
     card: "summary_large_image",
-    title: "Calculadora de Fungicidas | Fito Agrícola",
-    description:
-      "Monte e compare programas de fungicidas na soja — em segundos.",
+    title: siteTitle,
+    description: siteDescription,
+    images: ["/og-image.png"],
+    creator: "@josedealencar",
   },
+
+  // Robots e indexação
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  // Verificação de propriedade (adicione seus IDs quando tiver)
+  verification: {
+    // google: "seu-google-site-verification",
+    // facebook: "seu-facebook-domain-verification",
+  },
+
+  // Ícones
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+
+  // Categoria do site
+  category: "agriculture",
+
+  // Alternates para SEO
+  alternates: {
+    canonical: siteUrl,
+  },
+
+  // Informações adicionais para Ads
+  other: {
+    "fb:app_id": "", // Adicione seu Facebook App ID se tiver
+    "og:price:amount": "197.00",
+    "og:price:currency": "BRL",
+    "product:price:amount": "197.00",
+    "product:price:currency": "BRL",
   },
 };
 
