@@ -10,47 +10,47 @@ export default function Pricing({ onOpenModal }: PricingProps) {
   return (
     <section
       id="preco"
-      className="relative min-h-[600px] sm:min-h-[650px] md:min-h-[700px] flex items-center bg-cover bg-center bg-no-repeat"
+      className="relative min-h-[550px] sm:min-h-[600px] md:min-h-[650px] flex items-center bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/images/offer/offer-bg.webp')" }}
     >
-      {/* Overlay para melhor legibilidade no mobile */}
-      <div className="absolute inset-0 bg-black/50 md:bg-gradient-to-l md:from-black/70 md:via-black/40 md:to-transparent" />
+      {/* Overlay - mais forte no mobile */}
+      <div className="absolute inset-0 bg-black/80 md:bg-gradient-to-l md:from-black/80 md:via-black/50 md:to-transparent" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 w-full">
-        <div className="flex justify-center lg:justify-end">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 md:py-16 w-full">
+        <div className="flex justify-center md:justify-end">
           {/* Preço e CTA */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="w-full md:w-2/3 lg:w-5/12 text-center"
+            className="w-full max-w-md md:max-w-lg text-center"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-3">
               Vale mais que qualquer{" "}
               <span className="text-[#4CAF50]">fungicida</span>
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-6 sm:mb-8">
+            <p className="text-sm sm:text-base md:text-lg text-gray-200 mb-5 sm:mb-6">
               Se o programa falhar, a calculadora corrige
             </p>
 
-            <div className="bg-[#161b22]/95 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 border border-gray-700">
+            <div className="bg-[#161b22]/95 backdrop-blur-sm rounded-2xl p-5 sm:p-6 border border-gray-700">
 
               {/* Preço */}
-              <div className="flex items-baseline gap-1 sm:gap-2 mb-3 sm:mb-4 justify-center">
-                <span className="text-gray-400 text-lg sm:text-2xl">R$</span>
-                <span className="text-5xl sm:text-6xl md:text-7xl font-bold text-white">
+              <div className="flex items-baseline gap-1 mb-2 sm:mb-3 justify-center">
+                <span className="text-gray-400 text-base sm:text-xl">R$</span>
+                <span className="text-4xl sm:text-5xl md:text-6xl font-bold text-white">
                   197
                 </span>
-                <span className="text-gray-400 text-lg sm:text-2xl">,00</span>
+                <span className="text-gray-400 text-base sm:text-xl">,00</span>
               </div>
 
-              <p className="text-gray-400 mb-6 sm:mb-8 text-sm sm:text-base">
+              <p className="text-gray-400 mb-4 sm:mb-6 text-xs sm:text-sm">
                 ou em até 12x no cartão
               </p>
 
               {/* Features */}
-              <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8 text-left">
+              <div className="space-y-2 mb-5 sm:mb-6 text-left">
                 {[
                   "+400 fungicidas cadastrados",
                   "Programas ilimitados",
@@ -59,9 +59,9 @@ export default function Pricing({ onOpenModal }: PricingProps) {
                   "Histórico de programas",
                   "Atualizações gratuitas",
                 ].map((feature) => (
-                  <div key={feature} className="flex items-center gap-3">
+                  <div key={feature} className="flex items-center gap-2 sm:gap-3">
                     <div className="w-2 h-2 rounded-full bg-[#4CAF50] shrink-0" />
-                    <span className="text-gray-200 text-sm sm:text-base">{feature}</span>
+                    <span className="text-gray-200 text-xs sm:text-sm">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -70,12 +70,12 @@ export default function Pricing({ onOpenModal }: PricingProps) {
               <button
                 type="button"
                 onClick={onOpenModal}
-                className="w-full bg-[#4CAF50] hover:bg-[#2E7D32] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-green-500/30 text-base sm:text-lg"
+                className="w-full bg-[#4CAF50] hover:bg-[#2E7D32] text-white font-bold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-green-500/30 text-sm sm:text-base"
               >
                 Comprar Agora
               </button>
 
-              <p className="text-gray-500 text-xs sm:text-sm mt-3 sm:mt-4 text-center">
+              <p className="text-gray-500 text-xs mt-3 text-center">
                 Pagamento 100% seguro
               </p>
             </div>
