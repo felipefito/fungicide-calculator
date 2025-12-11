@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 
 export default function Results() {
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-white">
+    <section className="py-16 sm:py-20 md:py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-6 md:gap-8 items-center">
-          {/* Imagem - maior e sem bordas/sombras */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Imagem */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -19,9 +19,9 @@ export default function Results() {
             <Image
               src="/images/results/results-bg.webp"
               alt="Resultados da Calculadora"
-              width={900}
-              height={600}
-              className="w-full h-auto max-w-none lg:scale-110 lg:origin-left"
+              width={800}
+              height={530}
+              className="w-full h-auto"
               priority={false}
               quality={95}
             />

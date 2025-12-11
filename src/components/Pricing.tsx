@@ -24,7 +24,7 @@ export default function Pricing({ onOpenModal }: PricingProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="w-full max-w-md lg:max-w-lg text-center"
+            className="w-full md:w-2/3 lg:w-5/12 text-center"
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4">
               Vale mais que qualquer{" "}
