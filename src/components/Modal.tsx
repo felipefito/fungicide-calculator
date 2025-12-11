@@ -13,20 +13,26 @@ interface ModalProps {
 interface FormData {
   nome: string;
   email: string;
-  telefone: string;
+  whatsapp: string;
+  formacao: string;
   cep: string;
   cidade: string;
   estado: string;
+  area: string;
 }
+
+const API_URL = "/api/submit-form";
 
 export default function Modal({ isOpen, onClose }: ModalProps) {
   const [formData, setFormData] = useState<FormData>({
     nome: "",
     email: "",
-    telefone: "",
+    whatsapp: "",
+    formacao: "",
     cep: "",
     cidade: "",
     estado: "",
+    area: "",
   });
   const [isLoadingCEP, setIsLoadingCEP] = useState(false);
   const [cepError, setCepError] = useState("");
@@ -68,30 +74,56 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
     return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7, 11)}`;
   };
 
-  // Handle submit
+  // Handle submit to Google Sheets via API
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    setIsSubmitting(false);
-    setIsSuccess(true);
-
-    // Reset after success
-    setTimeout(() => {
-      setIsSuccess(false);
-      onClose();
-      setFormData({
-        nome: "",
-        email: "",
-        telefone: "",
-        cep: "",
-        cidade: "",
-        estado: "",
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nome: formData.nome,
+          email: formData.email,
+          whatsapp: formData.whatsapp,
+          formacao: formData.formacao,
+          cep: formData.cep,
+          cidade: formData.cidade,
+          estado: formData.estado,
+          area: formData.area,
+        }),
       });
-    }, 2000);
+
+      if (!response.ok) {
+        throw new Error("Erro ao enviar formulário");
+      }
+
+      setIsSubmitting(false);
+      setIsSuccess(true);
+
+      // Reset after success
+      setTimeout(() => {
+        setIsSuccess(false);
+        onClose();
+        setFormData({
+          nome: "",
+          email: "",
+          whatsapp: "",
+          formacao: "",
+          cep: "",
+          cidade: "",
+          estado: "",
+          area: "",
+        });
+      }, 2000);
+    } catch (error) {
+      console.error("Erro ao enviar formulário:", error);
+      setIsSubmitting(false);
+      alert("Erro ao enviar formulário. Tente novamente.");
+    }
   };
 
   // Close on escape
@@ -134,10 +166,11 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.2 }}
-            className="relative bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden"
+            className="relative bg-white rounded-3xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto"
           >
             {/* Close button */}
             <button
+              type="button"
               onClick={onClose}
               className="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500 hover:text-gray-700 transition-colors z-10"
             >
@@ -173,14 +206,14 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                 </div>
 
                 {/* Form */}
-                <form onSubmit={handleSubmit} className="p-8 space-y-5">
+                <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-4">
                   {/* Nome */}
                   <div>
                     <label
                       htmlFor="nome"
                       className="block text-sm font-medium text-gray-700 mb-1"
                     >
-                      Nome Completo
+                      Nome
                     </label>
                     <input
                       type="text"
@@ -216,29 +249,53 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                     />
                   </div>
 
-                  {/* Telefone */}
+                  {/* WhatsApp */}
                   <div>
                     <label
-                      htmlFor="telefone"
+                      htmlFor="whatsapp"
                       className="block text-sm font-medium text-gray-700 mb-1"
                     >
-                      Telefone/WhatsApp
+                      WhatsApp
                     </label>
                     <input
                       type="tel"
-                      id="telefone"
+                      id="whatsapp"
                       required
-                      value={formData.telefone}
+                      value={formData.whatsapp}
                       onChange={(e) =>
                         setFormData({
                           ...formData,
-                          telefone: formatPhone(e.target.value),
+                          whatsapp: formatPhone(e.target.value),
                         })
                       }
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 outline-none transition-all"
                       placeholder="(00) 00000-0000"
                       maxLength={15}
                     />
+                  </div>
+
+                  {/* Formação */}
+                  <div>
+                    <label
+                      htmlFor="formacao"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
+                      Formação
+                    </label>
+                    <select
+                      id="formacao"
+                      required
+                      value={formData.formacao}
+                      onChange={(e) =>
+                        setFormData({ ...formData, formacao: e.target.value })
+                      }
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 outline-none transition-all bg-white"
+                    >
+                      <option value="">Selecione...</option>
+                      <option value="Produtor">Produtor</option>
+                      <option value="Agrônomo">Agrônomo</option>
+                      <option value="Agrônomo e produtor">Agrônomo e produtor</option>
+                    </select>
                   </div>
 
                   {/* CEP */}
@@ -277,42 +334,78 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                   </div>
 
                   {/* Cidade e Estado */}
-                  {formData.cidade && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      className="grid grid-cols-2 gap-4"
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        htmlFor="cidade"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
+                        Cidade
+                      </label>
+                      <input
+                        type="text"
+                        id="cidade"
+                        required
+                        value={formData.cidade}
+                        onChange={(e) =>
+                          setFormData({ ...formData, cidade: e.target.value })
+                        }
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 outline-none transition-all"
+                        placeholder="Sua cidade"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="estado"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
+                        Estado
+                      </label>
+                      <input
+                        type="text"
+                        id="estado"
+                        required
+                        value={formData.estado}
+                        onChange={(e) =>
+                          setFormData({ ...formData, estado: e.target.value })
+                        }
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 outline-none transition-all"
+                        placeholder="UF"
+                        maxLength={2}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Área */}
+                  <div>
+                    <label
+                      htmlFor="area"
+                      className="block text-sm font-medium text-gray-700 mb-1"
                     >
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Cidade
-                        </label>
-                        <input
-                          type="text"
-                          value={formData.cidade}
-                          readOnly
-                          className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-600"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Estado
-                        </label>
-                        <input
-                          type="text"
-                          value={formData.estado}
-                          readOnly
-                          className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-600"
-                        />
-                      </div>
-                    </motion.div>
-                  )}
+                      Área
+                    </label>
+                    <select
+                      id="area"
+                      required
+                      value={formData.area}
+                      onChange={(e) =>
+                        setFormData({ ...formData, area: e.target.value })
+                      }
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 outline-none transition-all bg-white"
+                    >
+                      <option value="">Selecione...</option>
+                      <option value="Até 100 ha">Até 100 ha</option>
+                      <option value="101-200 ha">101-200 ha</option>
+                      <option value="201-1000 ha">201-1000 ha</option>
+                      <option value="Acima de 1000 ha">Acima de 1000 ha</option>
+                    </select>
+                  </div>
 
                   {/* Submit */}
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-green-500 hover:bg-green-600 disabled:bg-green-400 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-green-500/30 flex items-center justify-center gap-2"
+                    className="w-full bg-green-500 hover:bg-green-600 disabled:bg-green-400 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-green-500/30 flex items-center justify-center gap-2 mt-6"
                   >
                     {isSubmitting ? (
                       <>
@@ -320,7 +413,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                         Processando...
                       </>
                     ) : (
-                      <>Finalizar Compra - R$ 197,00</>
+                      "Comprar agora - R$ 197,00"
                     )}
                   </button>
 

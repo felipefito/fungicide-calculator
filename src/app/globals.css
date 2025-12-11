@@ -1,44 +1,46 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0d1117;
+  --foreground: #ffffff;
 
-  /* Brand Colors - Fito Agrícola */
-  --primary: #22c55e;
-  --primary-dark: #16a34a;
-  --primary-light: #4ade80;
-  --secondary: #064e3b;
-  --accent: #10b981;
+  /* Cores escuras do original */
+  --bg-dark: #0d1117;
+  --bg-dark-lighter: #161b22;
+  --bg-dark-card: #1c2128;
 
-  /* Neutrals */
-  --gray-50: #f9fafb;
-  --gray-100: #f3f4f6;
-  --gray-200: #e5e7eb;
-  --gray-300: #d1d5db;
-  --gray-400: #9ca3af;
-  --gray-500: #6b7280;
-  --gray-600: #4b5563;
-  --gray-700: #374151;
-  --gray-800: #1f2937;
-  --gray-900: #111827;
+  /* Verde da marca */
+  --green-primary: #4CAF50;
+  --green-dark: #2E7D32;
+  --green-light: #81C784;
+  --green-glow: rgba(76, 175, 80, 0.4);
+
+  /* Grama/campo */
+  --grass-dark: #1a3d1a;
+  --grass-light: #2d5a2d;
+
+  /* Texto */
+  --text-white: #ffffff;
+  --text-gray: #8b949e;
+  --text-muted: #6b7280;
+
+  /* Seções claras */
+  --bg-light: #ffffff;
+  --bg-light-gray: #f8f9fa;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-primary-dark: var(--primary-dark);
-  --color-primary-light: var(--primary-light);
-  --color-secondary: var(--secondary);
-  --color-accent: var(--accent);
+  --color-primary: var(--green-primary);
+  --color-primary-dark: var(--green-dark);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg-dark);
+  color: var(--text-white);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
@@ -53,32 +55,66 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--gray-100);
+  background: var(--bg-dark-lighter);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
+  background: var(--green-primary);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-dark);
+  background: var(--green-dark);
 }
 
-/* Glass effect utility */
-.glass {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+/* Seção escura com glow verde */
+.section-dark {
+  background: var(--bg-dark);
+  position: relative;
 }
 
-/* Gradient backgrounds */
-.gradient-primary {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+.section-dark::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(ellipse, var(--green-glow) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-.gradient-hero {
-  background: linear-gradient(180deg, var(--gray-50) 0%, #ffffff 100%);
+/* Seção clara */
+.section-light {
+  background: var(--bg-light);
+  color: var(--bg-dark);
+}
+
+/* Glow verde */
+.glow-green {
+  box-shadow: 0 0 60px var(--green-glow), 0 0 120px rgba(76, 175, 80, 0.2);
+}
+
+/* Fundo com grama */
+.bg-grass {
+  background: linear-gradient(to bottom, var(--bg-dark) 0%, var(--grass-dark) 100%);
+}
+
+/* Botão primário */
+.btn-primary {
+  background: var(--green-primary);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
 }
 
 /* Animation keyframes */
@@ -87,15 +123,15 @@ html {
   50% { transform: translateY(-10px); }
 }
 
-@keyframes pulse-green {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
-  50% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
 }
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
 
-.animate-pulse-green {
-  animation: pulse-green 2s ease-in-out infinite;
+.animate-glow {
+  animation: glow-pulse 3s ease-in-out infinite;
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calculator, ArrowRight, Sparkles } from "lucide-react";
 
 interface HeroProps {
   onOpenModal: () => void;
@@ -9,121 +8,72 @@ interface HeroProps {
 
 export default function Hero({ onOpenModal }: HeroProps) {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background Elements */}
-      <div className="absolute inset-0 gradient-hero" />
-      <div className="absolute top-20 left-10 w-72 h-72 bg-green-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float" />
-      <div
-        className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float"
-        style={{ animationDelay: "1s" }}
-      />
+    <section
+      className="relative min-h-screen flex items-center bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/images/hero/hero-bg.webp')" }}
+    >
+      {/* Overlay para melhor legibilidade - mais forte no mobile */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent md:from-black/60 md:via-black/30 md:to-transparent" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center">
-          {/* Badge */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 sm:pt-28 sm:pb-20 w-full">
+        <div className="max-w-xl lg:max-w-2xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-8"
+            transition={{ duration: 0.6 }}
           >
-            <Sparkles className="w-4 h-4" />
-            +400 fungicidas cadastrados
-          </motion.div>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 sm:mb-6">
+              Calculadora de{" "}
+              <span className="text-[#4CAF50]">Fungicidas</span>
+            </h1>
 
-          {/* Main Heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6"
-          >
-            Calculadora de{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600">
-              Fungicidas
-            </span>
-          </motion.h1>
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-100 mb-3 sm:mb-4">
+              Simule e compare a eficiência de produtos e programas de manejo
+            </p>
 
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl sm:text-2xl text-gray-600 mb-4 max-w-4xl mx-auto"
-          >
-            Simule e compare a eficiência de produtos e programas de manejo
-          </motion.p>
+            <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-white mb-6 sm:mb-8">
+              — em segundos
+            </p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-8"
-          >
-            — em segundos
-          </motion.p>
+            <p className="text-base sm:text-lg text-gray-200 mb-8 sm:mb-10 max-w-lg">
+              Monte e compare programas de fungicidas na soja com a ferramenta
+              que ajuda você a selecionar os produtos com melhor eficiência para
+              suas lavouras.
+            </p>
 
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-lg text-gray-500 mb-12 max-w-2xl mx-auto"
-          >
-            Monte e compare programas de fungicidas na soja com a ferramenta que
-            ajuda você a selecionar os produtos com melhor eficiência para suas
-            lavouras.
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <button
-              onClick={onOpenModal}
-              className="group bg-green-500 hover:bg-green-600 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-green-500/30 hover:-translate-y-1 flex items-center gap-2 text-lg animate-pulse-green"
-            >
-              Comprar Agora
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <a
-              href="https://api.whatsapp.com/send?phone=5554996219771&text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20da%20Calculadora%20de%20Fungicidas."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 hover:text-green-600 font-semibold px-8 py-4 rounded-full border-2 border-gray-200 hover:border-green-500 transition-all duration-300 flex items-center gap-2"
-            >
-              Agendar Demonstração
-            </a>
-          </motion.div>
-
-          {/* Calculator Icon */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-16"
-          >
-            <div className="relative inline-block">
-              <div className="absolute inset-0 bg-green-400 rounded-3xl blur-2xl opacity-20 scale-110" />
-              <div className="relative bg-gradient-to-br from-green-500 to-emerald-600 p-8 rounded-3xl shadow-2xl">
-                <Calculator className="w-24 h-24 text-white" />
-              </div>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <button
+                type="button"
+                onClick={onOpenModal}
+                className="bg-[#4CAF50] hover:bg-[#2E7D32] text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-green-500/30 hover:-translate-y-1 text-base sm:text-lg"
+              >
+                Comprar Agora
+              </button>
+              <a
+                href="https://api.whatsapp.com/send?phone=5554996219771&text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20da%20Calculadora%20de%20Fungicidas."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-[#4CAF50] font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full border-2 border-white/50 hover:border-[#4CAF50] transition-all duration-300 text-center text-base sm:text-lg"
+              >
+                Agendar Demonstração
+              </a>
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - hidden on very small screens */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 hidden sm:block"
       >
-        <a href="#como-funciona" className="flex flex-col items-center gap-2 text-gray-400 hover:text-green-500 transition-colors">
+        <a
+          href="#como-funciona"
+          className="flex flex-col items-center gap-2 text-white/70 hover:text-[#4CAF50] transition-colors"
+        >
           <span className="text-sm">Saiba mais</span>
           <div className="w-6 h-10 border-2 border-current rounded-full flex justify-center pt-2">
             <motion.div
