@@ -166,13 +166,13 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.2 }}
-            className="relative bg-white rounded-3xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto"
+            className="relative bg-[#0d1117] rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto border border-gray-800"
           >
             {/* Close button */}
             <button
               type="button"
               onClick={onClose}
-              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500 hover:text-gray-700 transition-colors z-10"
+              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center text-gray-400 hover:text-white transition-colors z-10"
             >
               <X className="w-5 h-5" />
             </button>
@@ -184,34 +184,36 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ type: "spring", duration: 0.5 }}
-                  className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6"
+                  className="w-20 h-20 rounded-full bg-[#4CAF50]/20 flex items-center justify-center mx-auto mb-6"
                 >
-                  <Check className="w-10 h-10 text-green-600" />
+                  <Check className="w-10 h-10 text-[#4CAF50]" />
                 </motion.div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                <h3 className="text-2xl font-bold text-white mb-2">
                   Cadastro Realizado!
                 </h3>
-                <p className="text-gray-500">
+                <p className="text-gray-400">
                   Em breve entraremos em contato com você.
                 </p>
               </div>
             ) : (
               <>
                 {/* Header */}
-                <div className="bg-gradient-to-br from-green-500 to-emerald-600 p-8 text-white">
-                  <h2 className="text-2xl font-bold mb-2">Quero a Calculadora!</h2>
-                  <p className="text-white/80">
+                <div className="bg-gradient-to-r from-[#4CAF50] to-[#2E7D32] p-6 sm:p-8">
+                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-1">
+                    Quero a Calculadora!
+                  </h2>
+                  <p className="text-white/80 text-sm sm:text-base">
                     Preencha seus dados para finalizar a compra
                   </p>
                 </div>
 
                 {/* Form */}
-                <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-4">
+                <form onSubmit={handleSubmit} className="p-5 sm:p-6 space-y-4">
                   {/* Nome */}
                   <div>
                     <label
                       htmlFor="nome"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-sm font-medium text-gray-300 mb-1.5"
                     >
                       Nome
                     </label>
@@ -223,7 +225,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                       onChange={(e) =>
                         setFormData({ ...formData, nome: e.target.value })
                       }
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white placeholder-gray-500 focus:border-[#4CAF50] focus:ring-2 focus:ring-[#4CAF50]/20 outline-none transition-all"
                       placeholder="Seu nome"
                     />
                   </div>
@@ -232,7 +234,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-sm font-medium text-gray-300 mb-1.5"
                     >
                       E-mail
                     </label>
@@ -244,7 +246,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
                       }
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white placeholder-gray-500 focus:border-[#4CAF50] focus:ring-2 focus:ring-[#4CAF50]/20 outline-none transition-all"
                       placeholder="seu@email.com"
                     />
                   </div>
@@ -253,7 +255,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                   <div>
                     <label
                       htmlFor="whatsapp"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-sm font-medium text-gray-300 mb-1.5"
                     >
                       WhatsApp
                     </label>
@@ -268,7 +270,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                           whatsapp: formatPhone(e.target.value),
                         })
                       }
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white placeholder-gray-500 focus:border-[#4CAF50] focus:ring-2 focus:ring-[#4CAF50]/20 outline-none transition-all"
                       placeholder="(00) 00000-0000"
                       maxLength={15}
                     />
@@ -278,7 +280,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                   <div>
                     <label
                       htmlFor="formacao"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-sm font-medium text-gray-300 mb-1.5"
                     >
                       Formação
                     </label>
@@ -289,12 +291,12 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                       onChange={(e) =>
                         setFormData({ ...formData, formacao: e.target.value })
                       }
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 outline-none transition-all bg-white"
+                      className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white focus:border-[#4CAF50] focus:ring-2 focus:ring-[#4CAF50]/20 outline-none transition-all appearance-none cursor-pointer"
                     >
-                      <option value="">Selecione...</option>
-                      <option value="Produtor">Produtor</option>
-                      <option value="Agrônomo">Agrônomo</option>
-                      <option value="Agrônomo e produtor">Agrônomo e produtor</option>
+                      <option value="" className="bg-[#161b22]">Selecione...</option>
+                      <option value="Produtor" className="bg-[#161b22]">Produtor</option>
+                      <option value="Agrônomo" className="bg-[#161b22]">Agrônomo</option>
+                      <option value="Agrônomo e produtor" className="bg-[#161b22]">Agrônomo e produtor</option>
                     </select>
                   </div>
 
@@ -302,7 +304,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                   <div>
                     <label
                       htmlFor="cep"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-sm font-medium text-gray-300 mb-1.5"
                     >
                       CEP
                     </label>
@@ -313,32 +315,32 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                         required
                         value={formData.cep}
                         onChange={(e) => handleCEPChange(e.target.value)}
-                        className={`w-full px-4 py-3 rounded-xl border ${
+                        className={`w-full px-4 py-3 rounded-lg bg-[#161b22] border ${
                           cepError
                             ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
-                            : "border-gray-200 focus:border-green-500 focus:ring-green-500/20"
-                        } focus:ring-2 outline-none transition-all pr-10`}
+                            : "border-gray-700 focus:border-[#4CAF50] focus:ring-[#4CAF50]/20"
+                        } text-white placeholder-gray-500 focus:ring-2 outline-none transition-all pr-10`}
                         placeholder="00000-000"
                         maxLength={9}
                       />
                       {isLoadingCEP && (
-                        <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 animate-spin" />
+                        <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 animate-spin" />
                       )}
                       {formData.cidade && !isLoadingCEP && (
-                        <MapPin className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500" />
+                        <MapPin className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#4CAF50]" />
                       )}
                     </div>
                     {cepError && (
-                      <p className="text-red-500 text-sm mt-1">{cepError}</p>
+                      <p className="text-red-400 text-sm mt-1">{cepError}</p>
                     )}
                   </div>
 
                   {/* Cidade e Estado */}
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label
                         htmlFor="cidade"
-                        className="block text-sm font-medium text-gray-700 mb-1"
+                        className="block text-sm font-medium text-gray-300 mb-1.5"
                       >
                         Cidade
                       </label>
@@ -350,14 +352,14 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                         onChange={(e) =>
                           setFormData({ ...formData, cidade: e.target.value })
                         }
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white placeholder-gray-500 focus:border-[#4CAF50] focus:ring-2 focus:ring-[#4CAF50]/20 outline-none transition-all"
                         placeholder="Sua cidade"
                       />
                     </div>
                     <div>
                       <label
                         htmlFor="estado"
-                        className="block text-sm font-medium text-gray-700 mb-1"
+                        className="block text-sm font-medium text-gray-300 mb-1.5"
                       >
                         Estado
                       </label>
@@ -369,7 +371,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                         onChange={(e) =>
                           setFormData({ ...formData, estado: e.target.value })
                         }
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white placeholder-gray-500 focus:border-[#4CAF50] focus:ring-2 focus:ring-[#4CAF50]/20 outline-none transition-all"
                         placeholder="UF"
                         maxLength={2}
                       />
@@ -380,7 +382,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                   <div>
                     <label
                       htmlFor="area"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-sm font-medium text-gray-300 mb-1.5"
                     >
                       Área
                     </label>
@@ -391,13 +393,13 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                       onChange={(e) =>
                         setFormData({ ...formData, area: e.target.value })
                       }
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 outline-none transition-all bg-white"
+                      className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white focus:border-[#4CAF50] focus:ring-2 focus:ring-[#4CAF50]/20 outline-none transition-all appearance-none cursor-pointer"
                     >
-                      <option value="">Selecione...</option>
-                      <option value="Até 100 ha">Até 100 ha</option>
-                      <option value="101-200 ha">101-200 ha</option>
-                      <option value="201-1000 ha">201-1000 ha</option>
-                      <option value="Acima de 1000 ha">Acima de 1000 ha</option>
+                      <option value="" className="bg-[#161b22]">Selecione...</option>
+                      <option value="Até 100 ha" className="bg-[#161b22]">Até 100 ha</option>
+                      <option value="101-200 ha" className="bg-[#161b22]">101-200 ha</option>
+                      <option value="201-1000 ha" className="bg-[#161b22]">201-1000 ha</option>
+                      <option value="Acima de 1000 ha" className="bg-[#161b22]">Acima de 1000 ha</option>
                     </select>
                   </div>
 
@@ -405,7 +407,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-green-500 hover:bg-green-600 disabled:bg-green-400 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-green-500/30 flex items-center justify-center gap-2 mt-6"
+                    className="w-full bg-[#4CAF50] hover:bg-[#2E7D32] disabled:bg-[#4CAF50]/50 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#4CAF50]/30 flex items-center justify-center gap-2 mt-6"
                   >
                     {isSubmitting ? (
                       <>
@@ -417,7 +419,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                     )}
                   </button>
 
-                  <p className="text-center text-gray-400 text-sm">
+                  <p className="text-center text-gray-500 text-sm">
                     Pagamento 100% seguro. Seus dados estão protegidos.
                   </p>
                 </form>
