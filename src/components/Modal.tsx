@@ -173,7 +173,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
             </button>
 
             {/* Header */}
-            <div className="bg-gradient-to-r from-[#4CAF50] to-[#2E7D32] p-6 sm:p-8">
+            <div className="bg-gradient-to-r from-[#6AAF08] to-[#5a9507] p-6 sm:p-8">
               <h2 className="text-xl sm:text-2xl font-bold text-white mb-1">
                 Quero a Calculadora!
               </h2>
@@ -200,7 +200,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                   onChange={(e) =>
                     setFormData({ ...formData, nome: e.target.value })
                   }
-                  className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white placeholder-gray-500 focus:border-[#4CAF50] focus:ring-2 focus:ring-[#4CAF50]/20 outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white placeholder-gray-500 focus:border-[#6AAF08] focus:ring-2 focus:ring-[#6AAF08]/20 outline-none transition-all"
                   placeholder="Seu nome"
                 />
               </div>
@@ -221,7 +221,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
-                  className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white placeholder-gray-500 focus:border-[#4CAF50] focus:ring-2 focus:ring-[#4CAF50]/20 outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white placeholder-gray-500 focus:border-[#6AAF08] focus:ring-2 focus:ring-[#6AAF08]/20 outline-none transition-all"
                   placeholder="seu@email.com"
                 />
               </div>
@@ -245,7 +245,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                       whatsapp: formatPhone(e.target.value),
                     })
                   }
-                  className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white placeholder-gray-500 focus:border-[#4CAF50] focus:ring-2 focus:ring-[#4CAF50]/20 outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white placeholder-gray-500 focus:border-[#6AAF08] focus:ring-2 focus:ring-[#6AAF08]/20 outline-none transition-all"
                   placeholder="(00) 00000-0000"
                   maxLength={15}
                 />
@@ -266,7 +266,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                   onChange={(e) =>
                     setFormData({ ...formData, formacao: e.target.value })
                   }
-                  className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white focus:border-[#4CAF50] focus:ring-2 focus:ring-[#4CAF50]/20 outline-none transition-all appearance-none cursor-pointer"
+                  className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white focus:border-[#6AAF08] focus:ring-2 focus:ring-[#6AAF08]/20 outline-none transition-all appearance-none cursor-pointer"
                 >
                   <option value="" className="bg-[#161b22]">Selecione...</option>
                   <option value="Produtor" className="bg-[#161b22]">Produtor</option>
@@ -293,7 +293,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                     className={`w-full px-4 py-3 rounded-lg bg-[#161b22] border ${
                       cepError
                         ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
-                        : "border-gray-700 focus:border-[#4CAF50] focus:ring-[#4CAF50]/20"
+                        : "border-gray-700 focus:border-[#6AAF08] focus:ring-[#6AAF08]/20"
                     } text-white placeholder-gray-500 focus:ring-2 outline-none transition-all pr-10`}
                     placeholder="00000-000"
                     maxLength={9}
@@ -302,7 +302,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                     <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 animate-spin" />
                   )}
                   {formData.cidade && !isLoadingCEP && (
-                    <MapPin className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#4CAF50]" />
+                    <MapPin className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#6AAF08]" />
                   )}
                 </div>
                 {cepError && (
@@ -327,7 +327,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                     onChange={(e) =>
                       setFormData({ ...formData, cidade: e.target.value })
                     }
-                    className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white placeholder-gray-500 focus:border-[#4CAF50] focus:ring-2 focus:ring-[#4CAF50]/20 outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white placeholder-gray-500 focus:border-[#6AAF08] focus:ring-2 focus:ring-[#6AAF08]/20 outline-none transition-all"
                     placeholder="Sua cidade"
                   />
                 </div>
@@ -346,7 +346,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                     onChange={(e) =>
                       setFormData({ ...formData, estado: e.target.value })
                     }
-                    className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white placeholder-gray-500 focus:border-[#4CAF50] focus:ring-2 focus:ring-[#4CAF50]/20 outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white placeholder-gray-500 focus:border-[#6AAF08] focus:ring-2 focus:ring-[#6AAF08]/20 outline-none transition-all"
                     placeholder="UF"
                     maxLength={2}
                   />
@@ -368,7 +368,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
                   onChange={(e) =>
                     setFormData({ ...formData, area: e.target.value })
                   }
-                  className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white focus:border-[#4CAF50] focus:ring-2 focus:ring-[#4CAF50]/20 outline-none transition-all appearance-none cursor-pointer"
+                  className="w-full px-4 py-3 rounded-lg bg-[#161b22] border border-gray-700 text-white focus:border-[#6AAF08] focus:ring-2 focus:ring-[#6AAF08]/20 outline-none transition-all appearance-none cursor-pointer"
                 >
                   <option value="" className="bg-[#161b22]">Selecione...</option>
                   <option value="Até 100 ha" className="bg-[#161b22]">Até 100 ha</option>
@@ -382,7 +382,8 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#4CAF50] hover:bg-[#2E7D32] disabled:bg-[#4CAF50]/50 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#4CAF50]/30 flex items-center justify-center gap-2 mt-6"
+                className="w-full bg-[#6AAF08] hover:bg-[#5a9507] disabled:bg-[#6AAF08]/50 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 flex items-center justify-center gap-2 mt-6"
+                style={{ boxShadow: "0px 0px 20px rgba(106, 175, 8, 0.5)" }}
               >
                 {isSubmitting ? (
                   <>

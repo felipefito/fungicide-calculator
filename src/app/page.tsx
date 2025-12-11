@@ -1,16 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import Calculator from "@/components/Calculator";
+import AppAvailability from "@/components/AppAvailability";
 import Demo from "@/components/Demo";
+import FailureRecovery from "@/components/FailureRecovery";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import History from "@/components/History";
 import HowItWorks from "@/components/HowItWorks";
+import LaunchOffer from "@/components/LaunchOffer";
 import Modal from "@/components/Modal";
 import Pricing from "@/components/Pricing";
-import Results from "@/components/Results";
+import RightDecision from "@/components/RightDecision";
+import ValueProposition from "@/components/ValueProposition";
 import WhatsAppCTA from "@/components/WhatsAppCTA";
 
 export default function Home() {
@@ -23,32 +26,29 @@ export default function Home() {
     <>
       <Header onOpenModal={openModal} />
       <main>
-        {/* Seção 1: Hero - fundo escuro */}
+        {/* Seção 1: Hero */}
         <Hero onOpenModal={openModal} />
 
-        {/* Seção 2: Como Funciona - fundo claro */}
-        <HowItWorks />
+        {/* Seção 2: Como Funciona */}
+        <HowItWorks onOpenModal={openModal} />
 
-        {/* Seção 3: Calculadora - fundo escuro */}
-        <Calculator />
+        {/* Seção 3: A Decisão Certa (com laptop e celular) */}
+        <ValueProposition onOpenModal={openModal} />
 
-        {/* Seção 4: Resultados - fundo claro */}
-        <Results />
+        {/* Seção 4: Se o Programa Falhar */}
+        <FailureRecovery onOpenModal={openModal} />
 
-        {/* Seção 5: Oferta/Preço - fundo escuro */}
-        <Pricing onOpenModal={openModal} />
-
-        {/* Seção 6: Demonstração - fundo claro */}
+        {/* Seção 5: Demonstração */}
         <Demo />
 
-        {/* Seção 7: Histórico - fundo escuro */}
-        <History />
+        {/* Seção 6: Histórico */}
+        <History onOpenModal={openModal} />
 
-        {/* Seção 8: CTA WhatsApp - fundo verde */}
+        {/* Seção 7: CTA WhatsApp */}
         <WhatsAppCTA />
       </main>
 
-      {/* Seção 9: Footer - fundo escuro */}
+      {/* Footer */}
       <Footer />
 
       {/* Modal de conversão */}

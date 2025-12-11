@@ -10,10 +10,10 @@
   --bg-dark-card: #1c2128;
 
   /* Verde da marca */
-  --green-primary: #4CAF50;
-  --green-dark: #2E7D32;
-  --green-light: #81C784;
-  --green-glow: rgba(76, 175, 80, 0.4);
+  --green-primary: #6AAF08;
+  --green-dark: #5a9507;
+  --green-light: #8BC34A;
+  --green-glow: rgba(106, 175, 8, 0.4);
 
   /* Grama/campo */
   --grass-dark: #1a3d1a;
@@ -93,7 +93,7 @@ html {
 
 /* Glow verde */
 .glow-green {
-  box-shadow: 0 0 60px var(--green-glow), 0 0 120px rgba(76, 175, 80, 0.2);
+  box-shadow: 0 0 60px var(--green-glow), 0 0 120px rgba(106, 175, 8, 0.2);
 }
 
 /* Fundo com grama */
@@ -114,7 +114,7 @@ html {
 .btn-primary:hover {
   background: var(--green-dark);
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+  box-shadow: 0 10px 30px rgba(106, 175, 8, 0.3);
 }
 
 /* Animation keyframes */

@@ -1,146 +1,108 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { MessageCircle, Sparkles, Shield, Zap } from "lucide-react";
+import Image from "next/image";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 interface HeroProps {
   onOpenModal: () => void;
 }
 
 export default function Hero({ onOpenModal }: HeroProps) {
+  const isMobile = useIsMobile();
+  const backgroundImage = isMobile
+    ? "url('/SEÇÃO 01/Bg-01-mobile.webp')"
+    : "url('/SEÇÃO 01/Bg-01.1.webp')";
+
   return (
     <section
-      className="relative min-h-screen flex items-center bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/images/hero/hero-bg.webp')" }}
+      className={`relative min-h-screen flex items-center bg-cover ${isMobile ? "bg-top" : "bg-center"} bg-no-repeat mt-10 overflow-hidden pt-20`}
+      style={{ backgroundImage }}
     >
-      {/* Overlay - mais forte no mobile para legibilidade */}
-      <div className="absolute inset-0 bg-black/70 md:bg-gradient-to-r md:from-black/80 md:via-black/50 md:to-transparent" />
-
-      {/* Glow effect */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-500/20 rounded-full blur-3xl hidden md:block" />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 sm:pt-24 sm:pb-16 w-full">
-        <div className="w-full md:w-2/3 lg:w-1/2 text-center md:text-left">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+      <div className={`relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${isMobile ? "pt-[42vh] pb-12" : "py-12 lg:py-20"}`}>
+        <div className={`flex ${isMobile ? "items-start" : "items-center"} justify-center lg:justify-start`}>
+          {/* Conteúdo centralizado em mobile, posicionado no espaço vazio */}
+          <div className="text-center lg:text-left max-w-2xl" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.8)' }}>
             {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-green-500/20 backdrop-blur-sm border border-green-500/30 text-green-400 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6"
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              +400 fungicidas cadastrados
-            </motion.div>
-
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-3 sm:mb-4">
-              Calculadora de{" "}
-              <span className="text-[#4CAF50] relative">
-                Fungicidas
-                <svg
-                  className="absolute -bottom-1 left-0 w-full h-2 text-green-500/50 hidden sm:block"
-                  viewBox="0 0 200 8"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M0 7 Q50 0 100 7 Q150 14 200 7"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                  />
-                </svg>
+            <div className="inline-flex items-center gap-2 bg-[#6AAF08]/20 border border-[#6AAF08]/40 rounded-full px-4 py-2 mb-3">
+              <Image
+                src="/brand/logo-white.png"
+                alt="Calculadora"
+                width={24}
+                height={24}
+                className="w-10 h-10"
+              />
+              <span className="text-white  font-semibold text-sm sm:text-base">
+                Calculadora de fungicidas
               </span>
+            </div>
+
+            {/* Título */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
+              Monte e compare <br /> programas de fungicidas na soja{" "}
+              <span className="text-gray-400 font-bold text-lg">— em segundos.</span>
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-100 mb-2 sm:mb-3">
-              Simule e compare a eficiência de produtos e programas de manejo
+            {/* Descrição */}
+            <p className="text-base sm:text-lg text-gray-300 mb-8 max-w-xl">
+              A ferramenta ajuda você a escolher os produtos com a melhor
+              eficiência para a sua lavoura.
             </p>
 
-            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#4CAF50] mb-5 sm:mb-6">
-              — em segundos
-            </p>
-
-            <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-6 sm:mb-8 max-w-lg mx-auto md:mx-0">
-              Monte e compare programas de fungicidas na soja com a ferramenta
-              que ajuda você a selecionar os produtos com melhor eficiência para
-              suas lavouras.
-            </p>
-
-            {/* Features mini badges */}
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-4 mb-6 sm:mb-8">
-              <div className="flex items-center gap-1.5 text-gray-300 text-xs sm:text-sm">
-                <Shield className="w-4 h-4 text-green-400" />
-                <span>Dados confiáveis</span>
-              </div>
-              <div className="flex items-center gap-1.5 text-gray-300 text-xs sm:text-sm">
-                <Zap className="w-4 h-4 text-green-400" />
-                <span>Resultado instantâneo</span>
-              </div>
+            {/* Como funciona */}
+            <div className="mb-6">
+              <h2 className="text-[#6AAF08] font-bold text-lg mb-3 text-center lg:text-left">
+                Como funciona:
+              </h2>
+              <ul className="space-y-2.5 flex flex-col items-start">
+                <li className="flex items-center gap-3">
+                  <Image
+                    src="/images/hero/step-1.webp"
+                    alt="Passo 1"
+                    width={28}
+                    height={28}
+                    className="w-7 h-7 shrink-0"
+                  />
+                  <span className="text-white">Defina o cenário da lavoura</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Image
+                    src="/images/hero/step-2.webp"
+                    alt="Passo 2"
+                    width={28}
+                    height={28}
+                    className="w-7 h-7 shrink-0"
+                  />
+                  <span className="text-white">
+                    Monte o programa (+400 fungicidas)
+                  </span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Image
+                    src="/images/hero/step-3.webp"
+                    alt="Passo 3"
+                    width={28}
+                    height={28}
+                    className="w-7 h-7 shrink-0"
+                  />
+                  <span className="text-white">
+                    Receba notas, alertas e sugestões
+                  </span>
+                </li>
+              </ul>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
-              <motion.button
-                type="button"
-                onClick={onOpenModal}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="bg-[#4CAF50] hover:bg-[#2E7D32] text-white font-bold px-6 sm:px-8 py-3.5 sm:py-4 rounded-full transition-all duration-300 shadow-lg shadow-green-500/30 hover:shadow-xl hover:shadow-green-500/40 text-base sm:text-lg flex items-center justify-center gap-2"
-              >
-                <span>Comprar Agora</span>
-                <span className="text-green-200 font-normal text-sm sm:text-base">R$ 197</span>
-              </motion.button>
-              <motion.a
-                href="https://api.whatsapp.com/send?phone=5554996219771&text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Calculadora%20de%20Fungicidas."
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-semibold px-6 sm:px-8 py-3.5 sm:py-4 rounded-full border border-white/30 hover:border-green-400 transition-all duration-300 text-center text-base sm:text-lg flex items-center justify-center gap-2"
-              >
-                <MessageCircle className="w-5 h-5" />
-                Chame no WhatsApp
-              </motion.a>
-            </div>
-
-            {/* Trust indicator */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-              className="text-gray-400 text-xs sm:text-sm mt-4 sm:mt-6"
+            {/* Botão */}
+            <button
+              type="button"
+              onClick={onOpenModal}
+              className="bg-[#6AAF08] hover:bg-[#5a9507] text-white font-bold text-lg px-12 py-4 rounded-full transition-all duration-300"
+              style={{ boxShadow: "0px 0px 20px rgba(106, 175, 8, 0.5)" }}
             >
-              Desenvolvido por José Alencar • Fito Consultoria Agrícola
-            </motion.p>
-          </motion.div>
+              Comprar
+            </button>
+          </div>
         </div>
       </div>
-
-      {/* Scroll indicator - hidden on mobile */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.5 }}
-        className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 hidden md:block"
-      >
-        <a
-          href="#como-funciona"
-          className="flex flex-col items-center gap-2 text-white/70 hover:text-[#4CAF50] transition-colors"
-        >
-          <span className="text-sm">Saiba mais</span>
-          <div className="w-6 h-10 border-2 border-current rounded-full flex justify-center pt-2">
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
-              className="w-1.5 h-1.5 bg-current rounded-full"
-            />
-          </div>
-        </a>
-      </motion.div>
     </section>
   );
 }

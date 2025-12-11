@@ -1,58 +1,69 @@
 "use client";
 
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
-export default function History() {
+interface HistoryProps {
+  onOpenModal: () => void;
+}
+
+export default function History({ onOpenModal }: HistoryProps) {
+  const isMobile = useIsMobile();
+  const backgroundImage = isMobile
+    ? "url('/Seção 06/Bg-05-mobile.webp')"
+    : "url('/Seção 06/Bg-05.webp')";
+
   return (
     <section
-      className="relative min-h-[450px] sm:min-h-[500px] md:min-h-[550px] flex items-center bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/images/history/history-bg.webp')" }}
+      className={`relative min-h-screen flex items-center bg-cover ${isMobile ? "bg-top" : "bg-center"} bg-no-repeat overflow-hidden py-20`}
+      style={{ backgroundImage }}
     >
-      {/* Overlay - mais forte no mobile */}
-      <div className="absolute inset-0 bg-black/70 md:bg-gradient-to-r md:from-black/70 md:via-black/40 md:to-transparent" />
+      <div className={`relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${isMobile ? "pt-[55vh] pb-12" : ""}`}>
+        <div className={`grid lg:grid-cols-2 gap-12 ${isMobile ? "items-start" : "items-center"}`}>
+          {/* Coluna esquerda - Conteúdo */}
+          <div className="text-center lg:text-left">
+            <p className="text-[#6AAF08] font-bold text-sm sm:text-base uppercase tracking-widest mb-3">
+              SEU HISTÓRICO VIRA
+            </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Guia de manejo
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-200 mb-10 leading-relaxed max-w-xl">
+              Reveja, edite e evolua seus programas a qualquer momento.
+            </p>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 md:py-16 w-full">
-        {/* Mobile: centralizado, Desktop: esquerda */}
-        <div className="flex justify-center md:justify-start">
-          <div className="w-full md:w-2/3 lg:w-1/2 text-center md:text-left">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
-                Histórico como{" "}
-                <span className="text-[#4CAF50]">Guia de Manejo</span>
-              </h2>
-
-              <p className="text-sm sm:text-base md:text-lg text-gray-100 mb-6 sm:mb-8">
-                Mantenha um registro completo de todos os programas criados e use
-                esse conhecimento para aprimorar suas decisões nas próximas safras.
-              </p>
-
-              <div className="space-y-3 sm:space-y-4 text-left">
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 rounded-full bg-[#4CAF50] mt-2 flex-shrink-0" />
-                  <p className="text-sm sm:text-base text-gray-200">
-                    <strong className="text-white">Registro Completo:</strong> Salve todos os programas testados com suas notas
-                  </p>
+            {/* Card informativo */}
+            <div className="bg-black/80 backdrop-blur-sm rounded-2xl p-6 mb-8 max-w-md border border-gray-700">
+              <div className="flex items-start gap-4">
+                <div className="shrink-0 rounded-full flex items-center justify-center w-20 h-">
+                  <Image
+                    src="/brand/logo-white.png"
+                    alt="Fito Logo"
+                    width={32}
+                    height={32}
+                    className="object-contain h-20 w-20"
+                  />
                 </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 rounded-full bg-[#4CAF50] mt-2 flex-shrink-0" />
-                  <p className="text-sm sm:text-base text-gray-200">
-                    <strong className="text-white">Evolução Contínua:</strong> Acompanhe a evolução das suas estratégias
-                  </p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 rounded-full bg-[#4CAF50] mt-2 flex-shrink-0" />
-                  <p className="text-sm sm:text-base text-gray-200">
-                    <strong className="text-white">Acesso Rápido:</strong> Recupere programas anteriores com um clique
+                <div className="flex-1">
+                  <p className="text-white text-sm leading-relaxed">
+                    A Calculadora de Fungicidas está disponível no Fito App.
+                    <br />
+                    Baixe o aplicativo e começar a usar.
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
+
+            <button
+              type="button"
+              onClick={onOpenModal}
+              className="bg-[#6AAF08] hover:bg-[#5a9507] text-white font-bold text-lg px-12 py-4 rounded-full transition-all duration-300 transform hover:scale-105"
+              style={{ boxShadow: "0px 0px 25px rgba(106, 175, 8, 0.6)" }}
+            >
+              Comprar
+            </button>
           </div>
+
         </div>
       </div>
     </section>
