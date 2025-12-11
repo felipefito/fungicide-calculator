@@ -18,7 +18,7 @@ const steps = [
   },
   {
     number: "/images/hero/step-3.webp",
-    title: "Receba notas e alertas",
+    title: "Receba notas e sugestões",
     description:
       "Obtenha avaliações detalhadas do seu programa com notas de eficiência e sugestões de melhoria.",
   },

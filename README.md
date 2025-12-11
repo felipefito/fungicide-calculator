@@ -7,7 +7,7 @@ Landing page para a Calculadora de Fungicidas - uma ferramenta que permite simul
 A Calculadora de Fungicidas ajuda agricultores a:
 - Definir cenários de lavoura personalizados
 - Montar programas com +400 fungicidas cadastrados
-- Receber notas de eficiência e alertas
+- Receber notas de eficiência e sugestões
 - Comparar diferentes programas de manejo
 
 ## Tech Stack
