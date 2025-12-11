@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Calculadora de Fungicidas
 
-## Getting Started
+Landing page para a Calculadora de Fungicidas - uma ferramenta que permite simular e comparar a eficiência de produtos e programas de manejo de fungicidas na soja.
 
-First, run the development server:
+## Sobre o Projeto
+
+A Calculadora de Fungicidas ajuda agricultores a:
+- Definir cenários de lavoura personalizados
+- Montar programas com +400 fungicidas cadastrados
+- Receber notas de eficiência e alertas
+- Comparar diferentes programas de manejo
+
+## Tech Stack
+
+- **Framework**: Next.js 16
+- **React**: 19
+- **Estilização**: Tailwind CSS v4
+- **Animações**: Framer Motion
+- **Ícones**: Lucide React
+- **TypeScript**: Strict mode
+
+## Funcionalidades da Landing Page
+
+- Hero section com CTAs animados
+- Seção "Como Funciona" em 3 passos
+- Grid de benefícios
+- Card de preço destacado
+- Prova social com análise visual
+- Carrossel de demonstração
+- Integração com ViaCEP no formulário
+- Design responsivo (mobile-first)
+- Modal de conversão
+
+## Instalação
 
 ```bash
+# Instalar dependências
+npm install
+
+# Rodar em desenvolvimento
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build para produção
+npm run build
+
+# Rodar build de produção
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Estrutura do Projeto
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+├── app/
+│   ├── layout.tsx       # Layout raiz com metadados SEO
+│   ├── page.tsx         # Página principal
+│   └── globals.css      # Estilos globais e variáveis
+├── components/
+│   ├── Header.tsx       # Navbar com menu mobile
+│   ├── Hero.tsx         # Seção principal
+│   ├── HowItWorks.tsx   # 3 passos
+│   ├── Benefits.tsx     # Grid de benefícios
+│   ├── Pricing.tsx      # Card de preço
+│   ├── SocialProof.tsx  # Prova social
+│   ├── Demo.tsx         # Carrossel
+│   ├── History.tsx      # Histórico como guia
+│   ├── WhatsAppCTA.tsx  # CTA WhatsApp
+│   ├── Footer.tsx       # Rodapé
+│   └── Modal.tsx        # Modal de conversão
+└── lib/
+    └── viacep.ts        # Integração ViaCEP
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Contato
 
-## Learn More
+- **Desenvolvedor**: José Alencar
+- **Empresa**: Fito Consultoria Agrícola Ltda
+- **WhatsApp**: +55 54 99621-9771
+- **Instagram**: [@josedealencar.jr](https://instagram.com/josedealencar.jr)
 
-To learn more about Next.js, take a look at the following resources:
+## Licença
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Projeto proprietário - Fito Consultoria Agrícola Ltda
