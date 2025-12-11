@@ -80,8 +80,8 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
     setIsSubmitting(true);
 
     try {
-      // Enviar dados silenciosamente para a planilha
-      fetch(API_URL, {
+      // Enviar dados para a planilha e aguardar resposta
+      await fetch(API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -96,7 +96,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
           estado: formData.estado,
           area: formData.area,
         }),
-      }).catch((err) => console.error("Erro ao salvar dados:", err));
+      });
 
       // Resetar formulário
       setFormData({
@@ -110,13 +110,14 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
         area: "",
       });
 
-      // Redirecionar imediatamente para o link de pagamento
+      // Redirecionar para o link de pagamento após salvar
       window.location.href = PAYMENT_URL;
     } catch (error) {
-      console.error("Erro:", error);
-      setIsSubmitting(false);
+      console.error("Erro ao salvar:", error);
       // Mesmo com erro, redireciona para pagamento
       window.location.href = PAYMENT_URL;
+    } finally {
+      setIsSubmitting(false);
     }
   };
 

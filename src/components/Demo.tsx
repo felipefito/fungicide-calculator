@@ -75,7 +75,7 @@ export default function Demo() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="relative max-w-xs sm:max-w-sm md:max-w-md mx-auto"
+          className="relative max-w-xs sm:max-w-sm md:max-w-md mx-auto px-14 sm:px-16 md:px-20"
         >
           {/* Phone Frame */}
           <div className="relative bg-gray-900 rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] p-2 sm:p-3 shadow-2xl">
@@ -83,7 +83,7 @@ export default function Demo() {
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 sm:w-28 md:w-32 h-4 sm:h-5 md:h-6 bg-gray-900 rounded-b-xl sm:rounded-b-2xl z-10" />
 
             {/* Screen */}
-            <div className="relative bg-white rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[2.5rem] overflow-hidden aspect-[9/19]">
+            <div className="relative bg-[#0d1117] rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[2.5rem] overflow-hidden aspect-[9/19.5]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentSlide}
@@ -91,13 +91,13 @@ export default function Demo() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -50 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute inset-0"
+                  className="absolute inset-0 flex items-start justify-center"
                 >
                   <Image
                     src={slides[currentSlide].image}
                     alt={slides[currentSlide].title}
                     fill
-                    className="object-cover object-top"
+                    className="object-contain object-top"
                     quality={90}
                   />
                 </motion.div>
@@ -109,7 +109,7 @@ export default function Demo() {
           <button
             type="button"
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 md:-translate-x-12 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-[#4CAF50] hover:shadow-xl transition-all duration-300 z-10"
+            className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-[#4CAF50] hover:shadow-xl transition-all duration-300 z-10"
             aria-label="Slide anterior"
           >
             <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -117,7 +117,7 @@ export default function Demo() {
           <button
             type="button"
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 md:translate-x-12 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-[#4CAF50] hover:shadow-xl transition-all duration-300 z-10"
+            className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-[#4CAF50] hover:shadow-xl transition-all duration-300 z-10"
             aria-label="Próximo slide"
           >
             <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
