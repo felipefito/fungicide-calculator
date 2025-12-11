@@ -118,7 +118,7 @@ export default function Header({ onOpenModal }: HeaderProps) {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Demonstração
-                </a>
+                </a> 
                 <button
                   type="button"
                   onClick={() => {
